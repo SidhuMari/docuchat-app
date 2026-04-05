@@ -1,3 +1,7 @@
+import sys
+import pysqlite3
+sys.modules["sqlite3"] = pysqlite3
+
 import streamlit as st
 from chroma_setup import create_vector_db
 from rag_pipeline import ask_hr_bot
