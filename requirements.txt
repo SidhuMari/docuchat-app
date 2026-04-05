@@ -5,3 +5,4 @@ groq==0.4.1
 protobuf==3.20.3
 pysqlite3-binary
 Pillow==9.5.0
+huggingface_hub==0.14.1
