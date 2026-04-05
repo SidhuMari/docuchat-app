@@ -1,4 +1,5 @@
-streamlit
-chromadb
-sentence-transformers
-groq
+streamlit==1.33.0
+chromadb==0.4.24
+sentence-transformers==2.2.2
+groq==0.4.1
+protobuf==3.20.3
