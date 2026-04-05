@@ -8,13 +8,13 @@ def create_vector_db():
         model_name="all-MiniLM-L6-v2"
     )
 
-    # Create collection
     collection = chroma_client.get_or_create_collection(
         name="hr_handbook",
         embedding_function=emb_fn
     )
 
- raw_text = """# Human Resources Handbook
+    raw_text = """
+# Human Resources Handbook
 
 **For an Indian Information Technology Company**
 
@@ -293,11 +293,14 @@ Employees are required to acknowledge that they have read, understood, and agree
     # Split into chunks
     raw_chunks = raw_text.split("##")
 
-    clean_chunks = [chunk.strip() for chunk in raw_chunks if chunk.strip()]
+    clean_chunks = []
+    for chunk in raw_chunks:
+        chunk = chunk.strip()
+        if len(chunk) > 0:
+            clean_chunks.append(chunk)
 
     chunk_ids = [f"chunk_{i}" for i in range(len(clean_chunks))]
 
-    # Add only if empty (avoid duplicates)
     if collection.count() == 0:
         collection.add(ids=chunk_ids, documents=clean_chunks)
 
